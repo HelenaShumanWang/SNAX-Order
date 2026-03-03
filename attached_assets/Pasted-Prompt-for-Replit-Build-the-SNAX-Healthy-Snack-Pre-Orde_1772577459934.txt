@@ -1,0 +1,529 @@
+Prompt for Replit: Build the "SNAX" Healthy Snack Pre-Order App
+
+1. Project Overview
+
+Build a mobile-first web application called SNAX, based on the concept "Future Me Ordered This." The app is a behavioral intervention designed to help busy college students make healthier late-night food choices. It works by allowing them to pre-order healthy snacks in the morning — when their self-control is higher — for delivery later that night.
+
+The core of the app is a pre-commitment and accountability system. It combines a simple e-commerce flow (browsing, ordering, payment) with unique behavioral features like consumption tracking ("eat-rate"), streak counters, gamification rewards, and social accountability nudges.
+
+Please build this as a full-stack web app (mobile-responsive) using React for the frontend and Node.js/Express for the backend, with a PostgreSQL database. Use Tailwind CSS for styling.
+
+
+
+
+2. Key Screens & User Flow
+
+The application follows this flow. Please implement each screen:
+
+Screen 1: Start / Landing Page
+
+•
+App branding and tagline.
+
+•
+Two buttons: "Log In" and "Sign Up".
+
+Screen 2: Sign Up Page
+
+•
+Input fields: Username, Email, Phone Number, Password.
+
+•
+A "Submit" button that creates a new user account and redirects to the Home Page.
+
+•
+Basic validation (email format, password length).
+
+Screen 3: Log In Page
+
+•
+Input fields: Email/Username and Password.
+
+•
+A "Log In" button that authenticates the user and redirects to the Home Page.
+
+Screen 4: Home Page (Main Dashboard)
+
+•
+This is the central hub after logging in.
+
+•
+Display the user's current streak count prominently.
+
+•
+Two main navigation cards/buttons: "Tracker" (go to eat-rate confirmation) and "Catalog" (browse snacks).
+
+•
+A section for health tips and contextual nutritional guidance (can be hardcoded content for MVP).
+
+•
+Bottom navigation bar for: Home, Catalog, Cart, Profile.
+
+Screen 5: Catalog Page
+
+•
+Displays a grid/list of available healthy snack items, each showing: image, name, price.
+
+•
+Each item card has a "Quick Add" button to add it directly to the cart.
+
+•
+Tapping the item card itself navigates to the Item Details page.
+
+•
+Include a search bar and optional dietary filter (e.g., vegan, gluten-free).
+
+Screen 6: Item Details Page
+
+•
+Shows full details for a selected snack: large image, description, full nutritional info (calories, protein, carbs, fat).
+
+•
+"Add to Cart" button.
+
+•
+A "Ask about this item" button linking to a Chatbot Page (can be a simple FAQ or placeholder for MVP).
+
+Screen 7: Chatbot Page
+
+•
+A simple chat interface where the user can ask questions about a food item.
+
+•
+For MVP, this can be a pre-populated FAQ or a basic rule-based chatbot. Display the question "What do you want to know about this item?" and provide common answers about ingredients, allergens, and nutrition.
+
+Screen 8: Cart Page
+
+•
+Lists all items the user has added to their cart.
+
+•
+Each item shows: name, quantity (adjustable with +/- buttons), price, and a remove button.
+
+•
+Displays the subtotal at the bottom.
+
+•
+"Proceed to Checkout" button.
+
+Screen 9: Checkout Page
+
+•
+Displays the final order summary: all items, quantities, and total cost.
+
+•
+Input fields for delivery details: delivery address (default to saved dorm address), scheduled delivery time (time picker).
+
+•
+A prominent "Pledge" section: a checkbox or toggle where the user commits: "I pledge to eat this healthy snack tonight instead of ordering junk food."
+
+•
+A "Place Order" button (payment can be simulated for MVP).
+
+Screen 10: Confirmation Page
+
+•
+Shown after a successful order.
+
+•
+Displays: order ID, items ordered, estimated delivery time, and a real-time order status indicator (e.g., "Order Placed" → "Preparing" → "Out for Delivery" → "Delivered").
+
+•
+For MVP, the status can auto-advance on a timer to simulate delivery.
+
+Screen 11: Tracker Page (Eat-Rate Confirmation)
+
+•
+Accessible from the Home Page after the scheduled delivery time has passed.
+
+•
+Prompt: "Did you eat your food?"
+
+•
+Options to select the percentage consumed: 100%, 75%, 50%, 25%, 0%.
+
+•
+A "Submit" button that records the eat-rate and updates the user's streak.
+
+Screen 12: Reward Page
+
+•
+Displayed when the user confirms a high eat-rate (e.g., >= 50%).
+
+•
+Shows: "Congrats!" message, updated streak count, and a visual reward (e.g., a virtual plant growing, a badge earned).
+
+Screen 13: Loss Page
+
+•
+Displayed when the user confirms a low eat-rate (e.g., < 50%) or misses confirmation.
+
+•
+Shows: "Boo..." message with a gentle consequence (e.g., virtual plant wilting, streak reset warning).
+
+Screen 14: Feedback Page
+
+•
+A simple form asking: "How was the experience?"
+
+•
+A star rating (1-5) and a text area for comments.
+
+•
+Submit button that saves feedback and returns to the Home Page.
+
+Screen 15: User Profile Page
+
+•
+Displays: username, email, profile picture placeholder.
+
+•
+Streak counter (prominently displayed).
+
+•
+Average eat-rate statistic.
+
+•
+Order history list (clickable to see past order details).
+
+•
+Dietary preferences settings (editable).
+
+•
+A "Friends" tab/section.
+
+Screen 16: Friends Page
+
+•
+List of current friends showing their username, streak count, and average eat-rate.
+
+•
+"Add Friend" button (search by username).
+
+•
+Pending friend request notifications.
+
+•
+Ability to send an accountability nudge to a friend.
+
+
+
+
+3. Detailed Feature Requirements
+
+3.1 Core Functionality
+
+Feature
+Description
+User Authentication
+Secure sign-up, login, logout, and session management using JWT.
+Menu Browser
+A browsable, filterable catalog of healthy snacks fetched from the database.
+Cart & Checkout
+Standard e-commerce cart with quantity management and a simulated payment step.
+Order System
+Create and store orders with items, cost, delivery time, address, and the user's pledge status.
+Delivery Tracking
+Display order status updates (simulated for MVP with a timer-based progression).
+User Profile
+View and edit personal info, dietary preferences, and order history.
+
+
+
+
+3.2 Behavioral & Gamification Features
+
+Feature
+Description
+Eat-Rate Confirmation
+Post-delivery prompt to track what percentage of the healthy snack was consumed.
+Streak Tracking
+Count consecutive days of successful healthy orders (eat-rate >= 50%). Visible on profile.
+Reward/Loss System
+Visual feedback (growing plant or earning badges) for maintaining streaks; gentle consequences for breaking them.
+Health Tips
+Display rotating nutritional tips and guidance on the home feed.
+Pledge System
+A pre-commitment prompt at checkout to strengthen the user's intention.
+
+
+
+
+3.3 Social & Accountability Features
+
+Feature
+Description
+Friends System
+Send/accept friend requests. View friends' public stats (streak, eat-rate).
+Accountability Nudges
+Automated or manual notifications when a friend's streak is at risk.
+Structured Challenges
+Pre-defined goals users can opt into (e.g., "7-day streak challenge").
+
+
+
+
+
+
+
+4. Database Schema
+
+Please create the following tables:
+
+SQL
+
+
+-- Users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  phone_number VARCHAR(20),
+  password_hash VARCHAR(255) NOT NULL,
+  dietary_preferences JSONB DEFAULT '[]',
+  streak_count INTEGER DEFAULT 0,
+  avg_eat_rate DECIMAL(5,2) DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Menu items table
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  image_url VARCHAR(255),
+  category VARCHAR(50),
+  nutritional_info JSONB,
+  is_available BOOLEAN DEFAULT TRUE
+);
+
+-- Orders table
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  status VARCHAR(30) DEFAULT 'placed',
+  delivery_address TEXT,
+  delivery_time TIMESTAMP,
+  total_cost DECIMAL(10,2),
+  pledge_confirmed BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Order items junction table
+CREATE TABLE order_items (
+  id SERIAL PRIMARY KEY,
+  order_id INTEGER REFERENCES orders(id),
+  item_id INTEGER REFERENCES items(id),
+  quantity INTEGER DEFAULT 1
+);
+
+-- Eat-rate confirmations
+CREATE TABLE eat_rate_confirmations (
+  id SERIAL PRIMARY KEY,
+  order_id INTEGER REFERENCES orders(id),
+  user_id INTEGER REFERENCES users(id),
+  percentage_eaten INTEGER CHECK (percentage_eaten BETWEEN 0 AND 100),
+  confirmed_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Friends table
+CREATE TABLE friends (
+  id SERIAL PRIMARY KEY,
+  user_id_1 INTEGER REFERENCES users(id),
+  user_id_2 INTEGER REFERENCES users(id),
+  status VARCHAR(20) DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Feedback table
+CREATE TABLE feedback (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  order_id INTEGER REFERENCES orders(id),
+  rating INTEGER CHECK (rating BETWEEN 1 AND 5),
+  comment TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+
+
+
+
+
+5. API Endpoints
+
+Please create a RESTful API with these endpoints:
+
+Authentication:
+
+•
+POST /api/auth/signup — Create a new user.
+
+•
+POST /api/auth/login — Authenticate and return a JWT.
+
+Menu Items:
+
+•
+GET /api/items — Get all available snack items (with optional filters).
+
+•
+GET /api/items/:id — Get details for a single item.
+
+Cart (client-side state is fine for MVP, or use a cart table):
+
+•
+GET /api/cart — Get current user's cart.
+
+•
+POST /api/cart — Add an item to the cart.
+
+•
+PUT /api/cart/:itemId — Update item quantity.
+
+•
+DELETE /api/cart/:itemId — Remove an item.
+
+Orders:
+
+•
+POST /api/orders — Place a new order (checkout).
+
+•
+GET /api/orders — Get current user's order history.
+
+•
+GET /api/orders/:id — Get a specific order's details and status.
+
+Eat-Rate & Streaks:
+
+•
+POST /api/orders/:id/confirm-eat-rate — Submit eat-rate for an order.
+
+•
+GET /api/profile/streak — Get current streak info.
+
+Profile:
+
+•
+GET /api/profile — Get user profile data.
+
+•
+PUT /api/profile — Update profile (dietary preferences, etc.).
+
+Friends & Social:
+
+•
+GET /api/friends — Get friends list with their stats.
+
+•
+POST /api/friends/add — Send a friend request.
+
+•
+PUT /api/friends/:id/respond — Accept or reject a friend request.
+
+•
+POST /api/friends/:id/nudge — Send an accountability nudge.
+
+Feedback:
+
+•
+POST /api/feedback — Submit feedback for an order.
+
+
+
+
+6. Seed Data
+
+Please seed the database with at least 10 sample healthy snack items so the catalog is populated on first load. Examples:
+
+Name
+Price
+Category
+Description
+Lemon-Almond Bar
+$3.99
+Bars
+A zesty, protein-packed bar with real lemon zest and roasted almonds.
+Blueberry Oats Cup
+$4.49
+Oats
+Warm oatmeal topped with fresh blueberries and a drizzle of honey.
+Dark Chocolate Trail Mix
+$3.49
+Snacks
+A mix of dark chocolate chips, almonds, cashews, and dried cranberries.
+Greek Yogurt Parfait
+$5.29
+Dairy
+Creamy Greek yogurt layered with granola and mixed berries.
+Avocado Toast Bites
+$4.99
+Savory
+Mini whole-grain toasts topped with smashed avocado and everything seasoning.
+Banana Peanut Butter Wrap
+$3.79
+Wraps
+A whole wheat tortilla with banana slices and natural peanut butter.
+Matcha Energy Balls
+$4.29
+Snacks
+No-bake energy balls with matcha, oats, and white chocolate chips.
+Veggie Hummus Cup
+$3.99
+Savory
+Baby carrots, celery, and bell pepper strips with classic hummus.
+Mixed Berry Smoothie
+$5.49
+Drinks
+A blend of strawberries, blueberries, banana, and almond milk.
+Coconut Chia Pudding
+$4.79
+Desserts
+Creamy chia pudding made with coconut milk and topped with mango.
+
+
+
+
+
+
+
+7. Design & Styling Guidelines
+
+•
+Color palette: Use a fresh, health-oriented palette. Primary: teal/green (#0D9488). Accent: warm orange (#F97316). Background: light gray (#F9FAFB). Text: dark gray (#111827).
+
+•
+Typography: Clean, modern sans-serif (e.g., Inter or system fonts).
+
+•
+Layout: Mobile-first responsive design. Use a bottom navigation bar on mobile.
+
+•
+Tone: Friendly, encouraging, and supportive — never punitive.
+
+
+
+
+8. Build Order (Suggested Phases)
+
+To keep the process logical and smooth, please build the app in this order:
+
+1.
+Phase 1 — Foundation: Set up the project structure, database, and authentication (Sign Up, Log In, JWT middleware).
+
+2.
+Phase 2 — Core Commerce: Build the Catalog Page, Item Details, Cart, Checkout, and Confirmation screens. Seed the menu data.
+
+3.
+Phase 3 — Behavioral Loop: Implement the Tracker (eat-rate confirmation), Reward/Loss pages, streak tracking logic, and the Pledge at checkout.
+
+4.
+Phase 4 — Profile & Social: Build the User Profile, Friends system, accountability nudges, and the Feedback page.
+
+5.
+Phase 5 — Polish: Add the Home Page dashboard, health tips, push notification placeholders, and final UI/UX polish.
+
+Thank you!
+
