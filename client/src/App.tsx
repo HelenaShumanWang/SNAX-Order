@@ -28,6 +28,7 @@ function AuthenticatedRoutes() {
   return (
     <>
       <Switch>
+        <Route path="/" component={HomePage} />
         <Route path="/home" component={HomePage} />
         <Route path="/catalog" component={CatalogPage} />
         <Route path="/item/:id" component={ItemDetailsPage} />
